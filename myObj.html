@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/myObj.css">
+</head>
+<body>
+<div id="app">
+     <div class="top">
+         <div class="top1" v-bind:style="color1" @click="change" ><img class="myList" v-bind:src="myList" alt=""></div>
+         <div class="top2" v-bind:style="color2" @click="change1"><img class="myGrade" v-bind:src="myGrade" alt=""></div>
+     </div>
+     <div class="content">
+         <div class="list" v-if="layout ==='list'">
+             <div class="con_1" v-for="myimg in array">
+                 <a v-bind:href="myimg.url">
+                     <img v-bind:src="myimg.image" alt="">
+                 </a>
+             </div>
+         </div>
+
+         <div class="grade" v-if="layout === 'grade'">
+             <div class="con_2" v-for="myimg in array">
+                 <a v-bind:href="myimg.url">
+                     <img v-bind:src="myimg.image" alt="">
+                 </a>
+                 <span>{{myimg.title}}</span>
+             </div>
+         </div>
+
+     </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            myGrade:"img/grade.png",
+            myList:"img/list.png",
+            layout:'list',
+            array: [{
+                    title: "What You Need To Know About CSS Variables",
+                    url: "http://tutorialzine.com/2016/03/what-you-need-to-know-about-css-variables/",
+                    image: 'https://tutorialzine.com/media/2016/03/css-variables.jpg'
+                  },
+                {
+                    title: "Freebie: 4 Great Looking Pricing Tables",
+                    url: "http://tutorialzine.com/2016/02/freebie-4-great-looking-pricing-tables/",
+                    image: 'https://tutorialzine.com/media/2016/02/great-looking-pricing-tables.jpg'
+                },
+                {
+                    title: "20 Interesting JavaScript and CSS Libraries for February 2016",
+                    url: "http://tutorialzine.com/2016/02/20-interesting-javascript-and-css-libraries-for-february-2016/",
+                    image: 'https://tutorialzine.com/media/2016/02/interesting-resources-february.jpg'
+                },
+                {
+                    title: "Quick Tip: The Easiest Way To Make Responsive Headers",
+                    url: "http://tutorialzine.com/2016/02/quick-tip-easiest-way-to-make-responsive-headers/",
+                    image: 'https://tutorialzine.com/media/2016/02/quick-tip-responsive-headers.png'
+                },
+                {
+                    title: "Learn SQL In 20 Minutes",
+                    url: "http://tutorialzine.com/2016/01/learn-sql-in-20-minutes/",
+                    image: 'https://tutorialzine.com/media/2016/01/learn-sql-20-minutes.png'
+                },
+                {
+                    title: "Creating Your First Desktop App With HTML, JS and Electron",
+                    url: "http://tutorialzine.com/2015/12/creating-your-first-desktop-app-with-html-js-and-electron/",
+                    image: 'https://tutorialzine.com/media/2015/12/creating-your-first-desktop-app-with-electron.png'
+                }]
+        },
+        color1:{
+            backgroundColor:''
+        },
+        color2:{
+            backgroundColor:''
+        },
+        methods:{
+            change:function () {
+                this.layout = 'grade';
+                this.color.backgroundColor = '#cb2b89';
+                this.color1.backgroundColor = '#3798b3';
+
+            },
+            change1:function () {
+                this.layout = 'list';
+                this.color.backgroundColor = '#3798b3';
+                this.color1.backgroundColor = '#cb2b89';
+            }
+        }
+   })
+</script>
+</body>
+</html>
